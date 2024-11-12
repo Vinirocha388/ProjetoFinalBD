@@ -23,7 +23,7 @@ O DER é uma representação gráfica do banco de dados, que inclui as tabelas, 
 O processo de implementação incluiu a criação física das tabelas e a definição dos relacionamentos. Foram inseridos dados reais retirados do portal, de forma que o banco de dados estivesse pronto para operações de teste e uso em consultas. Decisões técnicas, como a normalização e a definição de chaves primárias e estrangeiras, foram tomadas para otimizar a estrutura do banco.
 
 # Queries SQL
-Cada integrante foi responsável por desenvolver queries SQL específicas, que estão documentadas em arquivos `.sql` no repositório. As queries incluem inserções de dados, consultas e comandos de modificação. O objetivo é garantir que o banco de dados esteja pronto para operações de inserção, atualização e exclusão de dados.
+Cada integrante foi responsável por desenvolver queries SQL específicas, que estão documentadas em arquivos `.sql` no repositório. As queries incluem inserções de dados, consultas e comandos de modificação. O objetivo é garantir que o banco de dados esteja pronto para operações de inserção, atualização e exclusão de dados inseridos.
 
 # Documentação
 O projeto está documentado em um repositório no GitHub, que inclui todas as queries SQL, o MER e o DER. O arquivo `README.md` contém uma explicação detalhada do projeto, incluindo os papéis de cada integrante e uma visão geral da estrutura do banco de dados.
