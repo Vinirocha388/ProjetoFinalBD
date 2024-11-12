@@ -29,4 +29,4 @@ Cada integrante foi responsável por desenvolver queries SQL específicas, que e
 O projeto está documentado em um repositório no GitHub, que inclui todas as queries SQL, o MER e o DER. O arquivo `README.md` contém uma explicação detalhada do projeto, incluindo os papéis de cada integrante e uma visão geral da estrutura do banco de dados.
 
 # Apresentação do Projeto
-A apresentação do projeto tem como objetivo demonstrar o banco de dados, o MER e o DER, explicando a estrutura e as decisões tomadas no desenvolvimento. A equipe terá 10 minutos para apresentar e cada integrante participará para fornecer uma visão completa e detalhada do trabalho.
+A apresentação do projeto tem como objetivo demonstrar o banco de dados, o MER e o DER, explicando a estrutura e as decisões tomadas no desenvolvimento. A equipe terá 10 minutos para apresentar e cada integrante participará para fornecer uma visão completa e detalhada do projeto.
