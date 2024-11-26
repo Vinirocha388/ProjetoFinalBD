@@ -20,10 +20,10 @@ duracao
 quantidade-questao
 
 dicas:
-id_Dica (PK)      |
-Título
-Resumo
-Data_Publicacao
+id_dica (PK)      |
+descricao
+titulo
+id_autor (FK)
 
 autores:
 id_autor (PK)
@@ -51,23 +51,15 @@ habilidades
 email
 
 -Relacionamentos:
-
--- Carreiras  ----  Autores
--- Uma carreira pode ser escrita por vários autores, e um autor pode contribuir para várias carreiras.
--- Simulados  ----  Criadores
--- Um simulado pode ser criado por vários criadores, e um criador pode criar vários simulados. (arrumar)
-
-Dicas (N) ---- (1) Autores
-Uma dica pode ser escrita por vários autores, e um autor pode contribuir para várias dicas.
-
-Entrevistas (1) ---- (N) Autores
-Uma entrevista pode ser realizada por vários autores, e um autor pode realizar várias entrevistas.
-
-Notícias (1) ---- (N) Autores
-Uma notícia pode ser escrita por vários autores, e um autor pode escrever várias notícias.
+-- fazer depois
 
 
-
-
+-- criando tabelas dicas --
+CREATE TABLE dicas (
+    id_dica SERIAL PRIMARY KEY,
+    descricao VARCHAR(100) NOT NULL,
+    titulo VARCHAR(100) NOT NULL,
+    id_autor INT NOT NULL
+)
 
 
