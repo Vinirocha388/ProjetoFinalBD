@@ -55,5 +55,14 @@ ATRIBUTOS:
 - data_publicacao
 - id_autor (FK)
 
+-- Criando a tabela entrevistas --
+
+CREATE TABLE entrevistas (
+    id_entrevista SERIAL PRIMARY KEY,
+    id_autor INT NOT NULL,
+    titulo VARCHAR(100) UNIQUE NOT NULL,
+    link_video VARCHAR(100) NOT NULL,
+    duracao TIME NOT NULL
+)
 
 
