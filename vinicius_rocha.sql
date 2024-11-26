@@ -5,7 +5,6 @@ Carreiras:
 id_carreira (PK)
 Título 
 Descrição 
-Data_Publicacao
 
 CREATE TABLE Carreiras (
     id_carreira SERIAL PRIMARY KEY,
