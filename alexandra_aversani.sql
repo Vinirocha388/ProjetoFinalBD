@@ -3,7 +3,7 @@ CREATE TABLE Simulado (
     id INT AUTO_INCREMENT PRIMARY KEY,
     titulo VARCHAR(100) NOT NULL,
     nivel INT NOT NULL,
-    link_questoes VARCHAR(255) NOT NULL,
+    link_questoes TEXT NOT NULL,
     duracao TIME NOT NULL,
 );
 
