@@ -24,7 +24,8 @@ dicas:
 id_Dica (PK)      
 Título
 Resumo
-Data_Publicacao
+url
+id_autor (FK)
 
 autores:
 id_autor (PK)
@@ -36,6 +37,7 @@ Título
 Resumo
 Data_Publicacao
 ID_Autor (FK)
+url
 
 noticias:
 id_noticia (PK)
@@ -43,6 +45,7 @@ titulo
 conteudo
 data_publicacao
 id_autor (FK)
+url
 
 criadores:
 id_criador (PK)
@@ -50,22 +53,23 @@ nome
 papel_grupo
 habilidades
 email
+url
 
 -Relacionamentos:
 
--- Carreiras  ----  Autores
--- Uma carreira pode ser escrita por vários autores, e um autor pode contribuir para várias carreiras.
--- Simulados  ----  Criadores
--- Um simulado pode ser criado por vários criadores, e um criador pode criar vários simulados. (arrumar)
+Um autor pode produzir várias notícias: (1, N)
+Cada notícia é escrita por um único autor: (1, 1)
 
-Dicas (N) ---- (1) Autores
-Uma dica pode ser escrita por vários autores, e um autor pode contribuir para várias dicas.
+Um autor conduz várias entrevistas: (1, N)
+Cada entrevista é conduzida por um único autor: (1, 1)
 
-Entrevistas (1) ---- (N) Autores
-Uma entrevista pode ser realizada por vários autores, e um autor pode realizar várias entrevistas.
+Um autor pode criar várias dicas: (1, N)
+Cada dica é criada por um vários autores: (1, N)
 
-Notícias (1) ---- (N) Autores
-Uma notícia pode ser escrita por vários autores, e um autor pode escrever várias notícias.
+
+
+
+
 
 --Criação da tabela autores
 CREATE TABLE autores (
@@ -85,12 +89,12 @@ CREATE TABLE dicas (
     id SERIAL PRIMARY KEY,
     titulo VARCHAR(100) NOT NULL,
     descricao TEXT,
-    img_url  VARCHAR(255) NOT NULL,
+    url  VARCHAR(255) NOT NULL,
     id_autor INT NOT NULL,
     FOREIGN KEY (id_autor) REFERENCES autores(id_autor)
 )
 
-INSERT INTO dicas (titulo, descricao, img_url, id_autor) VALUES
+INSERT INTO dicas (titulo, descricao, url, id_autor) VALUES
 ('Quais conteúdos devo estudar?', 'conteúdos importantes para estudar', 'http://127.0.0.1:5505/image/dicas/imgdicasUM.png', 3),
 ('Plano de estudos', 'cronograma de estudos', 'http://127.0.0.1:5505/image/dicas2/imagem%20dicas%2002.png', 4),
 ('Quais são os métodos de estudos?', 'dicas de métodos de estudos eficiente para melhorar o foco', 'http://127.0.0.1:5505/image/dicas03/banner.png', 1),
