@@ -17,10 +17,11 @@ simulados:
 id_simulado (PK)
 titulo
 duracao
-quantidade-questao
+nivel
+link_questoes
 
 dicas:
-id_Dica (PK)      |
+id_Dica (PK)      
 Título
 Resumo
 Data_Publicacao
@@ -68,6 +69,14 @@ Uma notícia pode ser escrita por vários autores, e um autor pode escrever vár
 
 
 
-
+-- Criação da tabela dicas
+CREATE TABLE dicas (
+    id SERIAL PRIMARY KEY,
+    titulo VARCHAR(100) NOT NULL,
+    descricao TEXT,
+    img_url  VARCHAR(255) NOT NULL,
+    id_autor INT NOT NULL,
+    FOREIGN KEY (id_autor) REFERENCES autores(id_autor)
+)
 
 
