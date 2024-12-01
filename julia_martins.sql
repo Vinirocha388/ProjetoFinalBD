@@ -90,4 +90,10 @@ CREATE TABLE dicas (
     FOREIGN KEY (id_autor) REFERENCES autores(id_autor)
 )
 
-
+INSERT INTO dicas (titulo, descricao, img_url, id_autor) VALUES
+('Quais conteúdos devo estudar?', 'conteúdos importantes para estudar', 'http://127.0.0.1:5505/image/dicas/imgdicasUM.png', 3),
+('Plano de estudos', 'cronograma de estudos', 'http://127.0.0.1:5505/image/dicas2/imagem%20dicas%2002.png', 4),
+('Quais são os métodos de estudos?', 'dicas de métodos de estudos eficiente para melhorar o foco', 'http://127.0.0.1:5505/image/dicas03/banner.png', 1),
+('O que não levar para o Enem?', 'saber o que pode ou não pode levar para o Enem', 'http://127.0.0.1:5505/image/dicas04/banner.png', 5),
+('Planilha de estudos', 'organização dos dias da semana para estudar', 'http://127.0.0.1:5505/image/dicas05/planilha%20de%20estudos.jpg', 2),
+('Relato de profissionais da área', 'relato de uma professora de historia', 'http://127.0.0.1:5505/image/dicas6/pngtree-principal-office-and-teachers-png-image_11672526-removebg-preview.png', 1);
