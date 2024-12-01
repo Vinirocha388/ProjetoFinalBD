@@ -67,7 +67,18 @@ Uma entrevista pode ser realizada por vários autores, e um autor pode realizar 
 Notícias (1) ---- (N) Autores
 Uma notícia pode ser escrita por vários autores, e um autor pode escrever várias notícias.
 
+--Criação da tabela autores
+CREATE TABLE autores (
+    id_autor SERIAL PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL
+);
 
+INSERT INTO autores (nome) VALUES 
+('Agda Aparecida Serpentini'),
+('Alexandre Costa'),
+('Débora Aladim'),
+('Amanda de Souza'),
+('Sara de Souza Costa');
 
 -- Criação da tabela dicas
 CREATE TABLE dicas (
