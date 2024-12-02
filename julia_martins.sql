@@ -56,20 +56,25 @@ email
 url
 
 -Relacionamentos:
-
+-- AUTORES - NOTÍCIAS
 Um autor pode produzir várias notícias: (1, N)
 Cada notícia é escrita por um único autor: (1, 1)
 
+-- AUTORES - ENTREVISTAS
 Um autor conduz várias entrevistas: (1, N)
 Cada entrevista é conduzida por um único autor: (1, 1)
 
+-- AUTORES - DICAS
 Um autor pode criar várias dicas: (1, N)
 Cada dica é criada por um vários autores: (1, N)
 
+-- CRIADORES - SIMULADOS 
+Um criador pode produzir vários simulados: (1, N)
+Cada simulado é produzido por um único criador: (1, 1)
 
-
-
-
+-- SIMULADOS - CARREIRAS
+Um simulado pode ser utilizado em várias carreiras: (1, N)
+Uma carreira pode utilizar vários simulados: (1, N)
 
 --Criação da tabela autores
 CREATE TABLE autores (
