@@ -84,6 +84,8 @@ INSERT INTO autores (nome) VALUES
 ('Amanda de Souza'),
 ('Sara de Souza Costa');
 
+SELECT * FROM autores;
+
 -- Criação da tabela dicas
 CREATE TABLE dicas (
     id SERIAL PRIMARY KEY,
@@ -101,3 +103,13 @@ INSERT INTO dicas (titulo, descricao, url, id_autor) VALUES
 ('O que não levar para o Enem?', 'saber o que pode ou não pode levar para o Enem', 'http://127.0.0.1:5505/image/dicas04/banner.png', 5),
 ('Planilha de estudos', 'organização dos dias da semana para estudar', 'http://127.0.0.1:5505/image/dicas05/planilha%20de%20estudos.jpg', 2),
 ('Relato de profissionais da área', 'relato de uma professora de historia', 'http://127.0.0.1:5505/image/dicas6/pngtree-principal-office-and-teachers-png-image_11672526-removebg-preview.png', 1);
+
+SELECT * FROM dicas;
+
+-- Consultas da tabela de dicas 
+-- INNER JOIN (para obter uma lista de dicas que esteja relacionada a seus autores)
+
+SELECT d.titulo, d.descricao, d.url, a.nome
+FROM dicas d
+JOIN autores a ON d.id_autor = a.id_autor;
+
