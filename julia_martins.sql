@@ -3,7 +3,7 @@
 -ENTIDADES:
 
 carreiras, simulados, dicas, autores, entrevistas,
-notícias, criadores.
+notícias, criadores, FuncoesScrum. 
 
 -ATRIBUTOS:
 
@@ -47,6 +47,10 @@ data_publicacao
 id_autor (FK)
 url
 
+FuncoesScrum:
+id_funcao PK
+funcao
+
 criadores:
 id_criador (PK)
 nome
@@ -54,6 +58,9 @@ papel_grupo
 habilidades
 email
 url
+
+
+
 
 -Relacionamentos:
 -- AUTORES - NOTÍCIAS
@@ -68,13 +75,10 @@ Cada entrevista é conduzida por um único autor: (1, 1)
 Um autor pode criar várias dicas: (1, N)
 Cada dica é criada por um vários autores: (1, N)
 
--- CRIADORES - SIMULADOS 
-Um criador pode produzir vários simulados: (1, N)
-Cada simulado é produzido por um único criador: (1, 1)
+-- FUNÇÕES SCRUM - CRIADORES
+ Um criador poder ter no minimo 1 e no maximo 1 função: (1, 1)
+ Uma função tem no minimo 1 e no maximo N criador: (1, N);
 
--- SIMULADOS - CARREIRAS
-Um simulado pode ser utilizado em várias carreiras: (1, N)
-Uma carreira pode utilizar vários simulados: (1, N)
 
 --Criação da tabela autores
 CREATE TABLE autores (
@@ -111,10 +115,17 @@ INSERT INTO dicas (titulo, descricao, url, id_autor) VALUES
 
 SELECT * FROM dicas;
 
--- Consultas da tabela de dicas 
--- INNER JOIN (para obter uma lista de dicas que esteja relacionada a seus autores)
+-- Consultas da tabela de dicas
 
+-- UPDATE (atualizar o nome do autor que esta no id 2)
+UPDATE autores SET nome = 'Nathalia Ferreira' WHERE id_autor = 2;
+
+-- INNER JOIN (para obter uma lista de dicas que esteja relacionada a seus autores)
 SELECT d.titulo, d.descricao, d.url, a.nome
 FROM dicas d
 JOIN autores a ON d.id_autor = a.id_autor;
+
+-- DELETE (deletar autor que está no id 5)
+DELETE FROM dicas WHERE id = 5;
+
 
