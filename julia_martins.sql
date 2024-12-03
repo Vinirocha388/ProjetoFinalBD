@@ -117,6 +117,11 @@ SELECT * FROM dicas;
 
 -- Consultas da tabela de dicas
 
+
+-- UPDATE (atualizar o nome do autor que esta no id 2)
+UPDATE autores SET nome = 'Nathalia Ferreira' WHERE id_autor = 2;
+
+
 -- UPDATE (atualizar o nome do autor que esta no id 2)
 UPDATE autores SET nome = 'Nathalia Ferreira' WHERE id_autor = 2;
 
@@ -134,6 +139,7 @@ WHERE a.nome = 'Agda Aparecida Serpentini'
 -- DELETE (deletar autor que está no id 5)
 DELETE FROM autores WHERE id = 5;
 
-
+-- DELETE (deletar autor que está no id 5)
+DELETE FROM dicas WHERE id = 5;
 
 

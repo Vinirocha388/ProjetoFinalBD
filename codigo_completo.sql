@@ -88,7 +88,6 @@ CREATE TABLE carreiras (
     descricao TEXT
 );
 
-
 INSERT INTO carreiras (titulo, descricao) VALUES
 ('Pesquisa Acadêmica', 'Pesquisadores acadêmicos dedicam-se ao estudo aprofundado em áreas específicas, produzindo artigos, trabalhos e avaliações e análises científicas.'),
 ('Arqueologia', 'A arqueologia envolve o estudo de civilizações antigas através da excavação e análise de artefatos.'),
@@ -96,7 +95,6 @@ INSERT INTO carreiras (titulo, descricao) VALUES
 ('Consultoria Histórica', 'Consultores históricos ajudam a fornecer contextos e a aconselhamento em projetos que prezam a pesquisa histórica.'),
 ('Gestão de Patrimônio', 'Gestores de patrimônio cultural se responsabilizam por preservar, gerenciar e promover o patrimônio histórico e cultural.');
 
---Criando a tabela Simulado--
 CREATE TABLE simulado (
     id SERIAL PRIMARY KEY,
     titulo VARCHAR(100) NOT NULL,
@@ -113,6 +111,11 @@ INSERT INTO simulado (titulo, nivel, link_questoes, duracao) VALUES
 ('Simulado Nível 5', 5, 'https://www.jotform.com/form/243036947508058', '06:00:00'),
 ('Teste suas Capacidades', 0, 'https://cursoenemgratuito.com.br/simulado-geral-de-historia-para-o-enem/', '07:00:00');
 
+SELECT titulo, duracao 
+FROM simulado
+WHERE duracao > '03:00:00';
+
+
 
  CREATE TABLE FuncoesScrum (
     id_funcao SERIAL PRIMARY KEY,
@@ -120,7 +123,6 @@ INSERT INTO simulado (titulo, nivel, link_questoes, duracao) VALUES
  );
 
 INSERT INTO FuncoesScrum (funcao) VALUES 
-
 ('Product Owner'), 
 ('Scrum Master'),
 ('Membro Desenvolvedor');
@@ -138,7 +140,6 @@ SELECT * FROM FuncoesScrum;
         FOREIGN KEY (id_funcao)
         REFERENCES FuncoesScrum (id_funcao)
  );
-
 
 INSERT INTO Criadores (id_funcao , nome , idade, email, fotoUrl ) VALUES 
 ('1', 'Vinicius Rocha' , 17 , 'vinicius.a.rocha8@aluno.senai.br', 'https://site-historia-six.vercel.app/image/sobre/integrantes/Rocha.png'),
@@ -189,8 +190,14 @@ FROM Criadores c
 JOIN FuncoesScrum f ON c.id_funcao = f.id_funcao
 ORDER BY c.nome ASC;
 
+-- Seleciona o criador mais velho
+SELECT c.nome, f.funcao, c.idade
+FROM Criadores c
+JOIN FuncoesScrum f ON c.id_funcao = f.id_funcao
+WHERE c.idade >= 17;
 
---Criação da tabela autores
+
+
 CREATE TABLE autores (
     id_autor SERIAL PRIMARY KEY,
     nome VARCHAR(100) NOT NULL
@@ -205,7 +212,10 @@ INSERT INTO autores (nome) VALUES
 
 SELECT * FROM autores;
 
--- Criação da tabela dicas
+INSERT INTO autores (nome)
+VALUES ('Novo Autor');
+
+
 CREATE TABLE dicas (
     id SERIAL PRIMARY KEY,
     titulo VARCHAR(100) NOT NULL,
@@ -224,10 +234,11 @@ INSERT INTO dicas (titulo, descricao, url, id_autor) VALUES
 ('Relato de profissionais da área', 'relato de uma professora de historia', 'http://127.0.0.1:5505/image/dicas6/pngtree-principal-office-and-teachers-png-image_11672526-removebg-preview.png', 1);
 
 SELECT * FROM dicas;
+SELECT titulo, url 
+FROM dicas;
 
--- Consultas da tabela de dicas 
+
 -- INNER JOIN (para obter uma lista de dicas que esteja relacionada a seus autores)
-
 SELECT d.titulo, d.descricao, d.url, a.nome
 FROM dicas d
 JOIN autores a ON d.id_autor = a.id_autor;
@@ -241,9 +252,18 @@ CREATE TABLE noticias (
     id_autor INT NOT NULL
 );
 
-
 INSERT INTO noticias (titulo, conteudo, data_publicacao, id_autor) VALUES 
 ('Faculdades da região de São Paulo abrem vagas para inscrições', 'Conteúdo da notícia 1', '2021-01-01', 1),
 ('Novos registros históricos são encontrados', 'Conteúdo da notícia 2', '2021-01-02', 2),
 ('Como é o curso de História?', 'Conteúdo da notícia 3', '2021-01-03', 3);
+
+SELECT titulo, conteudo, data_publicacao 
+FROM noticias
+WHERE data_publicacao < '2022-01-01';
+
+
+-- Procura o nome do autor com a entrevista
+SELECT n.titulo, n.conteudo, n.data_publicacao, a.nome AS autor
+FROM noticias n
+JOIN autores a ON n.id_autor = a.id_autor;
 
