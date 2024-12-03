@@ -80,12 +80,12 @@ Uma carreira pode utilizar vários simulados: (1, N)
 -- Querys para criação das tabelas
 
 CREATE DATABASE site_historia;
-\c site historia;
+\c site_historia;
 
-CREATE TABLE Carreiras (
+CREATE TABLE carreiras (
     id_carreira SERIAL PRIMARY KEY,
     titulo VARCHAR(255) NOT NULL,
-    descricao TEXT,
+    descricao TEXT
 );
 
 
@@ -97,16 +97,15 @@ INSERT INTO carreiras (titulo, descricao) VALUES
 ('Gestão de Patrimônio', 'Gestores de patrimônio cultural se responsabilizam por preservar, gerenciar e promover o patrimônio histórico e cultural.');
 
 --Criando a tabela Simulado--
-CREATE TABLE Simulado (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+CREATE TABLE simulado (
+    id SERIAL PRIMARY KEY,
     titulo VARCHAR(100) NOT NULL,
     nivel INT NOT NULL,
     link_questoes TEXT NOT NULL,
-    duracao TIME NOT NULL,
+    duracao TIME NOT NULL
 );
 
---Inserts para a tabela Simulado--
-INSERT INTO Simulado (titulo, nivel, link_questoes, duracao) VALUES
+INSERT INTO simulado (titulo, nivel, link_questoes, duracao) VALUES
 ('Simulado Nível 1', 1, 'https://www.jotform.com/form/243036863744057', '02:00:00'),
 ('Simulado Nível 2', 2, 'https://www.jotform.com/form/243037604836053', '03:00:00'),
 ('Simulado Nível 3', 3, 'https://www.jotform.com/form/243036925762056', '04:00:00'),
@@ -115,23 +114,80 @@ INSERT INTO Simulado (titulo, nivel, link_questoes, duracao) VALUES
 ('Teste suas Capacidades', 0, 'https://cursoenemgratuito.com.br/simulado-geral-de-historia-para-o-enem/', '07:00:00');
 
 
-CREATE TABLE Criadores (
-    id_criador INT PRIMARY KEY,
-    nome VARCHAR(255) NOT NULL,
-    papel_grupo VARCHAR(255),
-    habilidades TEXT,
-    email VARCHAR(255) 
-);
+ CREATE TABLE FuncoesScrum (
+    id_funcao SERIAL PRIMARY KEY,
+    funcao VARCHAR (200) UNIQUE NOT NULL
+ );
 
--- Criando Inserts para a tabela autores  --
+INSERT INTO FuncoesScrum (funcao) VALUES 
 
-INSERT INTO Criadores (id_criador, nome, papel_grupo, habilidades, email) VALUES 
-('1', 'Vinicius Rocha' , 'Product Owner', 'Codar, gerir' , 'vinicius.a.rocha8@aluno.senai.br'),
-('2', 'Alexandra Aversani' , 'Scrum Master', 'Codar, gerir' , 'alexandra.aversani@aluno.senai.br'),
-('3', 'Gabriela Barbosa' , 'Membro Desenvolvedor', 'Codar' , 'gabriela.f.barbosa@aluno.senai.br'),
-('4', 'Julia Martins' , 'Membro Desenvolvedor', 'Codar' , 'Julia.martins7@aluno.senai.br'),
-('5', 'Matheus Marcelino' , 'Membro Desenvolvedor', 'Codar' , 'mateus.marcelino@aluno.senai.br'),
-('6', 'Nathalia Santos' , 'Membro Desenvolvedor', 'Codar' , 'nathalia.ferreira7629@gmail.com');
+('Product Owner'), 
+('Scrum Master'),
+('Membro Desenvolvedor');
+
+SELECT * FROM FuncoesScrum;
+
+ CREATE TABLE Criadores (
+    id_criador SERIAL PRIMARY KEY,
+    id_funcao INT NOT NULL,
+    nome VARCHAR (200) NOT NULL,
+    idade INT NOT NULL,
+    email VARCHAR(200) UNIQUE NOT NULL,
+    fotoUrl VARCHAR(500) UNIQUE,
+    CONSTRAINT fk_funcao
+        FOREIGN KEY (id_funcao)
+        REFERENCES FuncoesScrum (id_funcao)
+ );
+
+
+INSERT INTO Criadores (id_funcao , nome , idade, email, fotoUrl ) VALUES 
+('1', 'Vinicius Rocha' , 17 , 'vinicius.a.rocha8@aluno.senai.br', 'https://site-historia-six.vercel.app/image/sobre/integrantes/Rocha.png'),
+('2', 'Alexandra Aversani' , 17 , 'alexandra.aversani@aluno.senai.br', 'https://site-historia-six.vercel.app/image/sobre/integrantes/Alexandra.png'),
+('3', 'Gabriela Barbosa' , 17 , 'gabriela.f.barbosa@aluno.senai.br', 'https://site-historia-six.vercel.app/image/sobre/integrantes/Gabi.png'),
+('3', 'Julia Martins' , 16 , 'Julia.martins7@aluno.senai.br', 'https://site-historia-six.vercel.app/image/juls.jfif'),
+('3', 'Matheus Marcelino' , 17 , 'mateus.marcelino@aluno.senai.br', 'https://site-historia-six.vercel.app/image/sobre/integrantes/marcelino.png'),
+('3', 'Nathalia Santos' , 17 , 'nathalia.ferreira7629@gmail.com', 'https://site-historia-six.vercel.app/image/sobre/integrantes/Nathalia.png');
+
+
+
+SELECT c.nome AS criador, f.funcao , c.idade, c.email
+FROM Criadores c
+JOIN FuncoesScrum f ON c.id_funcao = f.id_funcao;
+
+
+SELECT c.nome AS criador, f.funcao, c.idade, c.email
+FROM Criadores c
+JOIN FuncoesScrum f ON c.id_funcao = f.id_funcao
+WHERE f.funcao = 'Product Owner';
+
+
+SELECT c.nome AS criador, f.funcao, c.idade, c.email
+FROM Criadores c
+JOIN FuncoesScrum f ON c.id_funcao = f.id_funcao
+WHERE f.funcao = 'Scrum Master';
+
+
+SELECT c.nome AS criador, f.funcao, c.idade, c.email
+FROM Criadores c
+JOIN FuncoesScrum f ON c.id_funcao = f.id_funcao
+WHERE f.funcao = 'Membro Desenvolvedor';
+
+
+SELECT c.nome AS criador, f.funcao
+FROM Criadores c
+JOIN FuncoesScrum f ON c.id_funcao = f.id_funcao;
+
+
+SELECT c.nome AS criador, f.funcao, c.idade, c.email
+FROM Criadores c
+JOIN FuncoesScrum f ON c.id_funcao = f.id_funcao
+ORDER BY c.idade DESC;
+
+
+SELECT c.nome AS criador, f.funcao, c.idade, c.email
+FROM Criadores c
+JOIN FuncoesScrum f ON c.id_funcao = f.id_funcao
+ORDER BY c.nome ASC;
 
 
 --Criação da tabela autores
@@ -157,7 +213,7 @@ CREATE TABLE dicas (
     url  VARCHAR(255) NOT NULL,
     id_autor INT NOT NULL,
     FOREIGN KEY (id_autor) REFERENCES autores(id_autor)
-)
+);
 
 INSERT INTO dicas (titulo, descricao, url, id_autor) VALUES
 ('Quais conteúdos devo estudar?', 'conteúdos importantes para estudar', 'http://127.0.0.1:5505/image/dicas/imgdicasUM.png', 3),
@@ -183,9 +239,8 @@ CREATE TABLE noticias (
     conteudo TEXT NOT NULL,
     data_publicacao DATE NOT NULL,
     id_autor INT NOT NULL
-)
+);
 
--- Criando Inserts para a tabela notícias --
 
 INSERT INTO noticias (titulo, conteudo, data_publicacao, id_autor) VALUES 
 ('Faculdades da região de São Paulo abrem vagas para inscrições', 'Conteúdo da notícia 1', '2021-01-01', 1),

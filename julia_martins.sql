@@ -125,7 +125,15 @@ SELECT d.titulo, d.descricao, d.url, a.nome
 FROM dicas d
 JOIN autores a ON d.id_autor = a.id_autor;
 
+-- INNER JOIN (Exibir lista de uma autora específica)
+SELECT d.titulo, d.descricao, d.url
+FROM dicas d
+JOIN autores a ON d.id_autor = a.id_autor;
+WHERE a.nome = 'Agda Aparecida Serpentini'
+
 -- DELETE (deletar autor que está no id 5)
-DELETE FROM dicas WHERE id = 5;
+DELETE FROM autores WHERE id = 5;
+
+
 
 
