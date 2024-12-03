@@ -1,0 +1,76 @@
+-ENTIDADES:
+
+carreiras, simulados, dicas, autores, entrevistas,
+notícias, criadores, FuncoesScrum. 
+
+-ATRIBUTOS:
+
+Carreiras:
+id_carreira (PK)
+Título 
+Descrição 
+Data_Publicacao 
+
+simulados:
+id_simulado (PK)
+titulo
+duracao
+nivel
+link_questoes
+
+dicas:
+id_Dica (PK)      
+Título
+Resumo
+url
+id_autor (FK)
+
+autores:
+id_autor (PK)
+Nome
+
+entrevistas:
+id_Entrada (PK)
+Título
+Resumo
+Data_Publicacao
+ID_Autor (FK)
+url
+
+noticias:
+id_noticia (PK)
+titulo
+conteudo
+data_publicacao
+id_autor (FK)
+url
+
+FuncoesScrum:
+id_funcao PK
+funcao
+
+criadores:
+id_criador (PK)
+nome
+papel_grupo
+habilidades
+email
+url
+
+
+-Relacionamentos:
+-- AUTORES - NOTÍCIAS
+Um autor pode produzir várias notícias: (1, N)
+Cada notícia é escrita por um único autor: (1, 1)
+
+-- AUTORES - ENTREVISTAS
+Um autor conduz várias entrevistas: (1, N)
+Cada entrevista é conduzida por um único autor: (1, 1)
+
+-- AUTORES - DICAS
+Um autor pode criar várias dicas: (1, N)
+Cada dica é criada por um vários autores: (1, N)
+
+-- FUNÇÕES SCRUM - CRIADORES
+ Um criador poder ter no minimo 1 e no maximo 1 função: (1, 1)
+ Uma função tem no minimo 1 e no maximo N criador: (1, N);
