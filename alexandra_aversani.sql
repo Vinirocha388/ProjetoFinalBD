@@ -1,6 +1,6 @@
 --Criando a tabela Simulado--
 CREATE TABLE Simulado (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     titulo VARCHAR(100) NOT NULL,
     nivel INT NOT NULL,
     link_questoes TEXT NOT NULL,
