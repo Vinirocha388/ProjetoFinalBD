@@ -103,7 +103,7 @@ CREATE TABLE dicas (
     url  VARCHAR(255) NOT NULL,
     id_autor INT NOT NULL,
     FOREIGN KEY (id_autor) REFERENCES autores(id_autor)
-)
+);
 
 INSERT INTO dicas (titulo, descricao, url, id_autor) VALUES
 ('Quais conteúdos devo estudar?', 'conteúdos importantes para estudar', 'http://127.0.0.1:5505/image/dicas/imgdicasUM.png', 3),
@@ -133,13 +133,12 @@ JOIN autores a ON d.id_autor = a.id_autor;
 -- INNER JOIN (Exibir lista de uma autora específica)
 SELECT d.titulo, d.descricao, d.url
 FROM dicas d
-JOIN autores a ON d.id_autor = a.id_autor;
-WHERE a.nome = 'Agda Aparecida Serpentini'
+JOIN autores a ON d.id_autor = a.id_autor
+WHERE a.nome = 'Agda Aparecida Serpentini';
 
 -- DELETE (deletar autor que está no id 5)
-DELETE FROM autores WHERE id = 5;
+DELETE FROM dicas WHERE id_autor = 5;
+DELETE FROM autores WHERE id_autor = 5;
 
--- DELETE (deletar autor que está no id 5)
-DELETE FROM dicas WHERE id = 5;
 
 
