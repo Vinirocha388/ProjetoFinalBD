@@ -215,11 +215,6 @@ SELECT * FROM autores;
 INSERT INTO autores (nome)
 VALUES ('Novo Autor');
 
--- Procura o nome do autor com a entrevista
-SELECT n.titulo, n.conteudo, n.data_publicacao, a.nome AS autor
-FROM noticias n
-JOIN autores a ON n.id_autor = a.id_autor;
-
 
 CREATE TABLE dicas (
     id SERIAL PRIMARY KEY,
@@ -265,4 +260,10 @@ INSERT INTO noticias (titulo, conteudo, data_publicacao, id_autor) VALUES
 SELECT titulo, conteudo, data_publicacao 
 FROM noticias
 WHERE data_publicacao < '2022-01-01';
+
+
+-- Procura o nome do autor com a entrevista
+SELECT n.titulo, n.conteudo, n.data_publicacao, a.nome AS autor
+FROM noticias n
+JOIN autores a ON n.id_autor = a.id_autor;
 
