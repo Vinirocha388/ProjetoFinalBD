@@ -17,7 +17,6 @@ Criadores:
  - id_funcao FK
  - nome 
  - idade
- - habilidades
  - email 
 
  -- Relacionamentos --
@@ -45,7 +44,6 @@ SELECT * FROM FuncoesScrum;
     id_funcao INT NOT NULL,
     nome VARCHAR (200) NOT NULL,
     idade INT NOT NULL,
-    habilidades TEXT,
     email VARCHAR(200) UNIQUE NOT NULL,
     fotoUrl VARCHAR(500) UNIQUE,
     CONSTRAINT fk_funcao
@@ -54,37 +52,37 @@ SELECT * FROM FuncoesScrum;
  );
 
 
-INSERT INTO Criadores (id_funcao , nome , idade , habilidades, email, fotoUrl ) VALUES 
-('1', 'Vinicius Rocha' , 17 , 'Codar, gerir' , 'vinicius.a.rocha8@aluno.senai.br', 'https://site-historia-six.vercel.app/image/sobre/integrantes/Rocha.png'),
-('2', 'Alexandra Aversani' , 17 , 'Codar, gerir' , 'alexandra.aversani@aluno.senai.br', 'https://site-historia-six.vercel.app/image/sobre/integrantes/Alexandra.png'),
-('3', 'Gabriela Barbosa' , 17 , 'Codar' , 'gabriela.f.barbosa@aluno.senai.br', 'https://site-historia-six.vercel.app/image/sobre/integrantes/Gabi.png'),
-('3', 'Julia Martins' , 16 , 'Codar' , 'Julia.martins7@aluno.senai.br', 'https://site-historia-six.vercel.app/image/juls.jfif'),
-('3', 'Matheus Marcelino' , 17 , 'Codar' , 'mateus.marcelino@aluno.senai.br', 'https://site-historia-six.vercel.app/image/sobre/integrantes/marcelino.png'),
-('3', 'Nathalia Santos' , 17 , 'Codar' , 'nathalia.ferreira7629@gmail.com', 'https://site-historia-six.vercel.app/image/sobre/integrantes/Nathalia.png');
+INSERT INTO Criadores (id_funcao , nome , idade, email, fotoUrl ) VALUES 
+('1', 'Vinicius Rocha' , 17 , 'vinicius.a.rocha8@aluno.senai.br', 'https://site-historia-six.vercel.app/image/sobre/integrantes/Rocha.png'),
+('2', 'Alexandra Aversani' , 17 , 'alexandra.aversani@aluno.senai.br', 'https://site-historia-six.vercel.app/image/sobre/integrantes/Alexandra.png'),
+('3', 'Gabriela Barbosa' , 17 , 'gabriela.f.barbosa@aluno.senai.br', 'https://site-historia-six.vercel.app/image/sobre/integrantes/Gabi.png'),
+('3', 'Julia Martins' , 16 , 'Julia.martins7@aluno.senai.br', 'https://site-historia-six.vercel.app/image/juls.jfif'),
+('3', 'Matheus Marcelino' , 17 , 'mateus.marcelino@aluno.senai.br', 'https://site-historia-six.vercel.app/image/sobre/integrantes/marcelino.png'),
+('3', 'Nathalia Santos' , 17 , 'nathalia.ferreira7629@gmail.com', 'https://site-historia-six.vercel.app/image/sobre/integrantes/Nathalia.png');
 
 -- Select que mostra a tabela Criadores com uma das 3 funções inseridas
 
-SELECT c.nome AS criador, f.funcao , c.idade, c.habilidades, c.email
+SELECT c.nome AS criador, f.funcao , c.idade, c.email
 FROM Criadores c
 JOIN FuncoesScrum f ON c.id_funcao = f.id_funcao;
 
 -- Select que mostra apenas o Product Owner
 
-SELECT c.nome AS criador, f.funcao, c.idade, c.habilidades, c.email
+SELECT c.nome AS criador, f.funcao, c.idade, c.email
 FROM Criadores c
 JOIN FuncoesScrum f ON c.id_funcao = f.id_funcao
 WHERE f.funcao = 'Product Owner';
 
 -- Select que mostra apenas o Scrum Master
 
-SELECT c.nome AS criador, f.funcao, c.idade, c.habilidades, c.email
+SELECT c.nome AS criador, f.funcao, c.idade, c.email
 FROM Criadores c
 JOIN FuncoesScrum f ON c.id_funcao = f.id_funcao
 WHERE f.funcao = 'Scrum Master';
 
 -- Select que mostra os Membros Desenvolvedores
 
-SELECT c.nome AS criador, f.funcao, c.idade, c.habilidades, c.email
+SELECT c.nome AS criador, f.funcao, c.idade, c.email
 FROM Criadores c
 JOIN FuncoesScrum f ON c.id_funcao = f.id_funcao
 WHERE f.funcao = 'Membro Desenvolvedor';
@@ -99,7 +97,7 @@ JOIN FuncoesScrum f ON c.id_funcao = f.id_funcao;
 
 -- Select que mostra tudo organizado da maior idade para a menor
 
-SELECT c.nome AS criador, f.funcao, c.idade, c.habilidades, c.email
+SELECT c.nome AS criador, f.funcao, c.idade, c.email
 FROM Criadores c
 JOIN FuncoesScrum f ON c.id_funcao = f.id_funcao
 ORDER BY c.idade DESC;
@@ -107,7 +105,7 @@ ORDER BY c.idade DESC;
 
 -- Select que mostra tudo organizado os nomes em ordem alfabética
 
-SELECT c.nome AS criador, f.funcao, c.idade, c.habilidades, c.email
+SELECT c.nome AS criador, f.funcao, c.idade, c.email
 FROM Criadores c
 JOIN FuncoesScrum f ON c.id_funcao = f.id_funcao
 ORDER BY c.nome ASC;
