@@ -4,7 +4,7 @@ CREATE TABLE Simulado (
     titulo VARCHAR(100) NOT NULL,
     nivel INT NOT NULL,
     link_questoes TEXT NOT NULL,
-    duracao TIME NOT NULL,
+    duracao TIME NOT NULL
 );
 
 --Inserts para a tabela Simulado--
@@ -19,7 +19,7 @@ INSERT INTO Simulado (titulo, nivel, link_questoes, duracao) VALUES
 
 --Select que retorna todos os simulados de um nível específico--
 
-SELECT * FROM Simulados WHERE nivel = 2;
+SELECT * FROM Simulado WHERE nivel = 2;
 
 --Select que conta quantos simulados existem na tabela--
 
