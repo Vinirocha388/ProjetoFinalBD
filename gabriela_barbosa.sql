@@ -1,46 +1,3 @@
--- Mer --
-
-ENTIDADES
-
-- Criadores
-
-ATRIBUTOS 
-
-- id (PK)
-- nome
-- idade
-- função/papel no grupo 
-- habilidades
-- email
-
- RELACIONAMENTOS 
-
- X
-
--- SQL
-
--- Criando a tabela autores --
-
-CREATE TABLE Criadores (
-    id_criador INT PRIMARY KEY,
-    nome VARCHAR(255) NOT NULL,
-    papel_grupo VARCHAR(255),
-    habilidades TEXT,
-    email VARCHAR(255) 
-);
-
--- Criando Inserts para a tabela autores  --
-
-INSERT INTO Criadores (id_criador, nome, papel_grupo, habilidades, email) VALUES 
-('1', 'Vinicius Rocha' , 'Product Owner', 'Codar, gerir' , 'vinicius.a.rocha8@aluno.senai.br'),
-('2', 'Alexandra Aversani' , 'Scrum Master', 'Codar, gerir' , 'alexandra.aversani@aluno.senai.br'),
-('3', 'Gabriela Barbosa' , 'Membro Desenvolvedor', 'Codar' , 'gabriela.f.barbosa@aluno.senai.br'),
-('4', 'Julia Martins' , 'Membro Desenvolvedor', 'Codar' , 'Julia.martins7@aluno.senai.br'),
-('5', 'Matheus Marcelino' , 'Membro Desenvolvedor', 'Codar' , 'mateus.marcelino@aluno.senai.br'),
-('6', 'Nathalia Santos' , 'Membro Desenvolvedor', 'Codar' , 'nathalia.ferreira7629@gmail.com')
-
-
--- 2 --
 
  MER 
 
@@ -90,34 +47,26 @@ SELECT * FROM FuncoesScrum;
     idade INT NOT NULL,
     habilidades TEXT,
     email VARCHAR(200) UNIQUE NOT NULL,
+    fotoUrl VARCHAR(500) UNIQUE,
     CONSTRAINT fk_funcao
         FOREIGN KEY (id_funcao)
         REFERENCES FuncoesScrum (id_funcao)
  );
 
 
-INSERT INTO Criadores (id_funcao , nome , idade , habilidades, email ) VALUES 
-('1', 'Vinicius Rocha' , 17 , 'Codar, gerir' , 'vinicius.a.rocha8@aluno.senai.br'),
-('2', 'Alexandra Aversani' , 17 , 'Codar, gerir' , 'alexandra.aversani@aluno.senai.br'),
-('3', 'Gabriela Barbosa' , 17 , 'Codar' , 'gabriela.f.barbosa@aluno.senai.br'),
-('3', 'Julia Martins' , 16 , 'Codar' , 'Julia.martins7@aluno.senai.br'),
-('3', 'Matheus Marcelino' , 17 , 'Codar' , 'mateus.marcelino@aluno.senai.br'),
-('3', 'Nathalia Santos' , 17 , 'Codar' , 'nathalia.ferreira7629@gmail.com');
+INSERT INTO Criadores (id_funcao , nome , idade , habilidades, email, fotoUrl ) VALUES 
+('1', 'Vinicius Rocha' , 17 , 'Codar, gerir' , 'vinicius.a.rocha8@aluno.senai.br', 'https://site-historia-six.vercel.app/image/sobre/integrantes/Rocha.png'),
+('2', 'Alexandra Aversani' , 17 , 'Codar, gerir' , 'alexandra.aversani@aluno.senai.br', 'https://site-historia-six.vercel.app/image/sobre/integrantes/Alexandra.png'),
+('3', 'Gabriela Barbosa' , 17 , 'Codar' , 'gabriela.f.barbosa@aluno.senai.br', 'https://site-historia-six.vercel.app/image/sobre/integrantes/Gabi.png'),
+('3', 'Julia Martins' , 16 , 'Codar' , 'Julia.martins7@aluno.senai.br', 'https://site-historia-six.vercel.app/image/juls.jfif'),
+('3', 'Matheus Marcelino' , 17 , 'Codar' , 'mateus.marcelino@aluno.senai.br', 'https://site-historia-six.vercel.app/image/sobre/integrantes/marcelino.png'),
+('3', 'Nathalia Santos' , 17 , 'Codar' , 'nathalia.ferreira7629@gmail.com', 'https://site-historia-six.vercel.app/image/sobre/integrantes/Nathalia.png');
 
 -- Select que mostra a tabela Criadores com uma das 3 funções inseridas
 
 SELECT c.nome AS criador, f.funcao , c.idade, c.habilidades, c.email
 FROM Criadores c
 JOIN FuncoesScrum f ON c.id_funcao = f.id_funcao;
-
-
--- Select que mostra apenas o Scrum Master
-
-SELECT c.nome AS criador, f.funcao, c.idade, c.habilidades, c.email
-FROM Criadores c
-JOIN FuncoesScrum f ON c.id_funcao = f.id_funcao
-WHERE f.funcao = 'Scrum Master';
-
 
 -- Select que mostra apenas o Product Owner
 
@@ -126,6 +75,12 @@ FROM Criadores c
 JOIN FuncoesScrum f ON c.id_funcao = f.id_funcao
 WHERE f.funcao = 'Product Owner';
 
+-- Select que mostra apenas o Scrum Master
+
+SELECT c.nome AS criador, f.funcao, c.idade, c.habilidades, c.email
+FROM Criadores c
+JOIN FuncoesScrum f ON c.id_funcao = f.id_funcao
+WHERE f.funcao = 'Scrum Master';
 
 -- Select que mostra os Membros Desenvolvedores
 
