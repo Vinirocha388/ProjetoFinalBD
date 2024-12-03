@@ -216,19 +216,19 @@ VALUES ('Novo Autor');
 CREATE TABLE dicas (
     id SERIAL PRIMARY KEY,
     titulo VARCHAR(100) NOT NULL,
-    descricao TEXT,
+    conteudo TEXT,
     url  VARCHAR(255) NOT NULL,
     id_autor INT NOT NULL,
     FOREIGN KEY (id_autor) REFERENCES autores(id_autor)
 );
 
-INSERT INTO dicas (titulo, descricao, url, id_autor) VALUES
-('Quais conteúdos devo estudar?', 'conteúdos importantes para estudar', 'http://127.0.0.1:5505/image/dicas/imgdicasUM.png', 3),
+INSERT INTO dicas (titulo, conteudo, url, id_autor) VALUES
+('Quais conteúdos devo estudar?', 'História Antiga, História Medieval,História Moderna, História Contemporânea', 'http://127.0.0.1:5505/image/dicas/imgdicasUM.png', 3),
 ('Plano de estudos', 'cronograma de estudos', 'http://127.0.0.1:5505/image/dicas2/imagem%20dicas%2002.png', 4),
-('Quais são os métodos de estudos?', 'dicas de métodos de estudos eficiente para melhorar o foco', 'http://127.0.0.1:5505/image/dicas03/banner.png', 1),
-('O que não levar para o Enem?', 'saber o que pode ou não pode levar para o Enem', 'http://127.0.0.1:5505/image/dicas04/banner.png', 5),
+('Quais são os métodos de estudos?', 'Mapa mental, Resumos, Técnica Pomodoro, A auto explicação e a auto interrogação, Mnemônica, Jogos, Anotações Cornell', 'http://127.0.0.1:5505/image/dicas03/banner.png', 1),
+('O que não levar para o Enem?', 'Aparelhos Eletrônicos, Livros e Anotações, Bonés, Chapéus e Óculos Escuros, Relógios Inteligentes', 'http://127.0.0.1:5505/image/dicas04/banner.png', 5),
 ('Planilha de estudos', 'organização dos dias da semana para estudar', 'http://127.0.0.1:5505/image/dicas05/planilha%20de%20estudos.jpg', 2),
-('Relato de profissionais da área', 'relato de uma professora de historia', 'http://127.0.0.1:5505/image/dicas6/pngtree-principal-office-and-teachers-png-image_11672526-removebg-preview.png', 1);
+('Planilha de estudos-Humanas', 'Cronograma Completo, Conteúdos mais cobrados, divisão dos conteudos,importância de estudar', 'http://127.0.0.1:5505/image/dicas6/pngtree-principal-office-and-teachers-png-image_11672526-removebg-preview.png', 1);
 
 SELECT * FROM dicas;
 SELECT titulo, url 
@@ -236,7 +236,7 @@ FROM dicas;
 
 
 -- INNER JOIN (para obter uma lista de dicas que esteja relacionada a seus autores)
-SELECT d.titulo, d.descricao, d.url, a.nome
+SELECT d.titulo, d.conteudo, d.url, a.nome
 FROM dicas d
 JOIN autores a ON d.id_autor = a.id_autor;
 
