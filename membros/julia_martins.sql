@@ -106,12 +106,25 @@ CREATE TABLE dicas (
 );
 
 INSERT INTO dicas (titulo, descricao, url, id_autor) VALUES
-('Quais conteúdos devo estudar?', 'conteúdos importantes para estudar', 'http://127.0.0.1:5505/image/dicas/imgdicasUM.png', 3),
-('Plano de estudos', 'cronograma de estudos', 'http://127.0.0.1:5505/image/dicas2/imagem%20dicas%2002.png', 4),
-('Quais são os métodos de estudos?', 'dicas de métodos de estudos eficiente para melhorar o foco', 'http://127.0.0.1:5505/image/dicas03/banner.png', 1),
-('O que não levar para o Enem?', 'saber o que pode ou não pode levar para o Enem', 'http://127.0.0.1:5505/image/dicas04/banner.png', 5),
+('Quais conteúdos devo estudar?', 'Civilizações Mesopotâmicas, Egito Antigo, Grécia Antiga, Roma Antiga, Renascimento Cultural, 
+Civilizações Mesopotâmicas, Egito Antigo, Grécia Antiga, Roma Antiga, Renascimento Cultural', 'http://127.0.0.1:5505/image/dicas/imgdicasUM.png', 3),
+('Plano de estudos', 'Um bom planejamento de estudo é essencial para gerenciar o tempo e priorizar as matérias mais difíceis, 
+especialmente no início, quando você está mais disposto. Foque nos principais assuntos e busque um entendimento 
+profundo, não apenas decorar. Alterne os conteúdos para facilitar o aprendizado e garantir que o conhecimento 
+seja útil a longo prazo.', 'http://127.0.0.1:5505/image/dicas2/imagem%20dicas%2002.png', 4),
+('Quais são os métodos de estudos?', 'A organização melhora o foco e a eficiência nos estudos, enquanto metas claras aumentam a motivação. 
+Monitorar o progresso reduz o estresse e melhora a retenção. 
+A técnica das três colunas (anotações, tópicos e resumo) ajuda a organizar e conectar as informações, otimizando o 
+tempo e o desempenho nas provas.', 'http://127.0.0.1:5505/image/dicas03/banner.png', 1),
+('O que levar para o Enem?', 'Leve um documento com foto, caneta preta transparente, máscara de proteção, água, lanches leves, 
+roupas confortáveis e um relógio simples (verifique as regras). O cartão de inscrição é recomendado, 
+e lápis e borracha são úteis para rascunhos. Se necessário, leve medicamentos e outros itens pessoais. 
+O caderno de questões pode ser levado após o horário de saída permitido.', 'http://127.0.0.1:5505/image/dicas04/banner.png', 5),
 ('Planilha de estudos', 'organização dos dias da semana para estudar', 'http://127.0.0.1:5505/image/dicas05/planilha%20de%20estudos.jpg', 2),
 ('Relato de profissionais da área', 'relato de uma professora de historia', 'http://127.0.0.1:5505/image/dicas6/pngtree-principal-office-and-teachers-png-image_11672526-removebg-preview.png', 1);
+
+
+
 
 SELECT * FROM dicas;
 
